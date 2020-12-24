@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAProject.Services", "NBAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAProject.Tests", "NBAProject.Tests\NBAProject.Tests.csproj", "{398E9185-6A77-49CE-B12B-FD6066B7EA1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "build\Build.csproj", "{53B2E008-EBC6-4030-BB97-6488F1948C01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B2E008-EBC6-4030-BB97-6488F1948C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B2E008-EBC6-4030-BB97-6488F1948C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B2E008-EBC6-4030-BB97-6488F1948C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B2E008-EBC6-4030-BB97-6488F1948C01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -358,18 +358,6 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# Ionide (cross platform F# VS Code tools) working folder
-.ionide/
-
-### fsharp ###
-lib/debug
-lib/release
-Debug
-obj
-bin
-/build/
-*.exe
-!.paket/paket.bootstrapper.exe
 
 ### Rider ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -592,9 +580,10 @@ fabric.properties
 
 # Python Tools for Visual Studio (PTVS)
 
-# Cake - Uncomment if you are using it
-# tools/**
-# !tools/packages.config
+Cake
+tools/**
+!tools/packages.config
+.dotnet/**
 
 # Tabs Studio
 
