@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAProject.Models", "NBAPro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAProject.Services", "NBAProject.Services\NBAProject.Services.csproj", "{8CE1750F-33B1-417A-865A-DC3FBD61D818}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAProject.Tests", "NBAProject.Tests\NBAProject.Tests.csproj", "{398E9185-6A77-49CE-B12B-FD6066B7EA1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8CE1750F-33B1-417A-865A-DC3FBD61D818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CE1750F-33B1-417A-865A-DC3FBD61D818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE1750F-33B1-417A-865A-DC3FBD61D818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398E9185-6A77-49CE-B12B-FD6066B7EA1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
