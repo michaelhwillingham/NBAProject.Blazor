@@ -24,7 +24,8 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Mozilla Public License 2.0][license-shield]][license-url]
+[![CI Status][ci-shield]][ci-url]
 
 
 
@@ -100,7 +101,7 @@ TODO:Add story about project here.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-TODO:To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
@@ -112,12 +113,14 @@ TODO:To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/michaelhwillingham/NBAProject.Blazor.git
    ```
-2. Execute F# build script
-   ```sh
-   dotnet fake run build.fsx
+2. Execute CakeFrosting build script (Windows)
+   ```pwsh
+   ./build.ps1
    ```
-
-
+   MacOS & Linux
+      ```sh
+   build.sh
+   ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -167,7 +170,7 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 ### Application Libraries
 * [Json.NET](https://www.newtonsoft.com/json)
 ### CI/CD
-* [FAKE](https://fake.build/)
+* [CakeFrosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
 * [Amazon Web Services](https://aws.amazon.com/)
 ### Testing
 * [Fixie](https://fixie.github.io/)
@@ -191,3 +194,5 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 [issues-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/issues
 [license-shield]: https://img.shields.io/github/license/michaelhwillingham/NBAProject.Blazor.svg?style=for-the-badge
 [license-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/blob/master/LICENSE.txt
+[ci-shield]: https://img.shields.io/github/workflow/status/michaelhwillingham/NBAProject.Blazor/CI-Build?style=for-the-badge
+[ci-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/actions
