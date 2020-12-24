@@ -381,6 +381,13 @@ bin
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**/aws.xml
+.idea/**/encodings.xml
+.idea/**/indexLayout.xml
+.idea/**/modules.xml
+.idea/**/projectSettingsUpdater.xml
+.idea/**/riderModule.iml
+.idea/**/vcs.xml
 
 # Generated files
 .idea/**/contentModel.xml
