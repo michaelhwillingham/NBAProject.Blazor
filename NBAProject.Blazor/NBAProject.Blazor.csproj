@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NBAProject.Models\NBAProject.Models.csproj" />
+      <ProjectReference Include="..\NBAProject.Services\NBAProject.Services.csproj" />
+    </ItemGroup>
+
+</Project>
