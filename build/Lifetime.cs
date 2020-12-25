@@ -11,8 +11,6 @@ namespace Build
         public override void Setup(BuildContext context)
         {
             context.Information("Setting things up...");
-            context.ProjectDirectories = Directory.GetDirectories(Directory.GetCurrentDirectory())
-                .Where(x => x.Split("/").Last().StartsWith("NBAProject"));
         }
 
         public override void Teardown(BuildContext context, ITeardownContext info)

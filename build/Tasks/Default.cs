@@ -2,7 +2,7 @@ using Cake.Frosting;
 
 namespace Build.Tasks
 {
-    [Dependency(typeof(Test))]
+    [Dependency(typeof(Publish))]
     public sealed class Default : FrostingTask<BuildContext>
     {
     }
