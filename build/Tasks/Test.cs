@@ -12,20 +12,23 @@ namespace Build.Tasks
     {
         public override void Run(BuildContext context)
         {
-            Console.WriteLine("Searching for test projects...");
-            var testProjectPaths = context.ProjectDirectories
-                .Where(x => x.EndsWith("Tests"))
+            var projects = Directory.GetDirectories(Directory.GetCurrentDirectory())
+                .Where(x => x.Split("/").Last().EndsWith("Tests"))
                 .ToList();
-            Console.WriteLine($"{testProjectPaths.Count.ToString()} test project(s) discovered.");
+            Console.WriteLine($"{projects.Count.ToString()} test project(s) discovered.");
             Console.WriteLine();
-            
-            foreach (var testProjectPath in testProjectPaths)
+
+            foreach (var project in projects)
             {
-                var projectName = testProjectPath.Split("/").Last();
-                Console.WriteLine($"Running Test Project: {projectName}");
-                Directory.SetCurrentDirectory(testProjectPath);
-                context.DotNetCoreTool("fixie --no-build --framework net5.0");
+                Console.WriteLine($"Navigating to directory {project}");
+                var projectName = project.Split("/").Last();
+                Directory.SetCurrentDirectory($"{Directory.GetCurrentDirectory()}/{projectName}");
+                
+                context.DotNetCoreTool($"fixie --configuration {context.MsBuildConfiguration} --no-build --framework net5.0");
+                Console.WriteLine();
             }
+            
+            Directory.SetCurrentDirectory("..");
         }
     }
 }
