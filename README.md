@@ -44,7 +44,7 @@
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/wiki/Architecture"><strong>Explore the architecture wiki »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/michaelhwillingham/NBAProject.Blazor">TODO:View Demo</a>
+    <a href="https://nbaproject-blazor-app.azurewebsites.net/">View Demo</a>
     ·
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/issues">TODO:Report Bug</a>
     ·
@@ -105,7 +105,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* Download and install the [.NET 5.0.1 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
+* None! The Cake Frosting script will install the necessary .NET SDK
 
 ### Installation
 
@@ -113,12 +113,12 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/michaelhwillingham/NBAProject.Blazor.git
    ```
-2. Execute CakeFrosting build script (Windows)
+2. Execute Cake Frosting build (Windows, MacOS, and Linux)
    ```pwsh
    ./build.ps1
    ```
-   MacOS & Linux
-      ```sh
+   or
+   ```sh
    build.sh
    ```
 
@@ -170,8 +170,9 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 ### Application Libraries
 * [Json.NET](https://www.newtonsoft.com/json)
 ### CI/CD
-* [CakeFrosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
-* [Amazon Web Services](https://aws.amazon.com/)
+* [Cake Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
+* [GitHub Actions](https://github.com/features/actions)
+* [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/)
 ### Testing
 * [Fixie](https://fixie.github.io/)
 * [Shouldly](https://shouldly.io/)
