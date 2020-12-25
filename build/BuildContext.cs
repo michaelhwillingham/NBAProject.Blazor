@@ -4,7 +4,7 @@ using Cake.Frosting;
 
 namespace Build
 {
-    public abstract class BuildContext : FrostingContext
+    public class BuildContext : FrostingContext
     {
         public string MsBuildConfiguration { get; set; }
 
