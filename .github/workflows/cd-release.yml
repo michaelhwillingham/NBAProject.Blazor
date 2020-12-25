@@ -1,0 +1,26 @@
+name: CD-Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: nbaproject.blazor-artifact
+          path: ./artifact
+      
+      - name: Azure Login
+        uses: Azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Publish to Azure AppService
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: NBAProject-Blazor-App
+          package: ./artifact
