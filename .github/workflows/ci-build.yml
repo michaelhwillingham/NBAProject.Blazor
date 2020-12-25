@@ -1,0 +1,42 @@
+name: CI-Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout NBAProject.Blazor repository
+        uses: actions/checkout@v2
+      
+      - name: Get branch
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: get_branch
+       
+      - name: Execute build script (Debug)
+        if: steps.get_branch.outputs.branch != 'main'
+        run: bash build.sh --configuration=Debug
+      
+      - name: Execute build script (Release)
+        if: steps.get_branch.outputs.branch == 'main'
+        run: bash build.sh --configuration=Release
+      
+      - name: Publish build artifact
+        if: steps.get_branch.outputs.branch == 'main'
+        uses: actions/upload-artifact@v2
+        with:
+          name: nbaproject.blazor-artifact
+          path: ./release
+      
+      - name: Create release
+        if: steps.get_branch.outputs.branch == 'main'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: Release --- ${{ github.ref}}
+          draft: false
+          prerelease: false
