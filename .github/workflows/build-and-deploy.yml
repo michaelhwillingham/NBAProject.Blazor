@@ -1,4 +1,4 @@
-name: CI-Build
+name: Build-And-Deploy
 
 on: push
 
@@ -7,22 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout NBAProject.Blazor repository
+        id: checkout
         uses: actions/checkout@v2
       
       - name: Get branch
+        id: get_branch
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: get_branch
        
       - name: Execute build script (Debug)
+        id: build_debug
         if: steps.get_branch.outputs.branch != 'main'
         run: bash build.sh --configuration=Debug
       
       - name: Execute build script (Release)
+        id: build_release
         if: steps.get_branch.outputs.branch == 'main'
         run: bash build.sh --configuration=Release
       
       - name: Publish build artifact
+        id: publish_artifact
         if: steps.get_branch.outputs.branch == 'main'
         uses: actions/upload-artifact@v2
         with:
@@ -30,6 +34,7 @@ jobs:
           path: ./release
       
       - name: Create release
+        id: create_release
         if: steps.get_branch.outputs.branch == 'main'
         uses: actions/create-release@v1
         env:
@@ -41,3 +46,21 @@ jobs:
           body: Release --- ${{ env.VERSION_ID }}
           draft: false
           prerelease: true
+          allowUpdates: true
+
+  deploy:
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        id: download_artifacts
+        uses: actions/download-artifact@v2
+      
+      - name: Publish to Azure AppService
+        id: publish_to_azure
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: NBAProject-Blazor-App
+          package: ./nbaproject.blazor-artifact
+          publish-profile: ${{ secrets.AZURE_PUBLISH_SETTINGS }}
