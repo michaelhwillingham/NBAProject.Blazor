@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+        <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fixie" Version="2.2.2" />
+      <PackageReference Include="Moq" Version="4.15.2" />
       <PackageReference Include="Shouldly" Version="4.0.3" />
       <DotNetCliToolReference Include="Fixie.Console" Version="2.2.2" />
     </ItemGroup>

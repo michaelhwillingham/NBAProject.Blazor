@@ -12,6 +12,8 @@ namespace NBAProject.Tests
         {
             var instance = testClass.Construct();
             
+            SetUp(instance);
+            
             testClass.RunCases(@case =>
             {
                 @case.Execute(instance);
