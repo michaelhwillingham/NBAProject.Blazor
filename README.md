@@ -44,7 +44,7 @@
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/wiki/Architecture"><strong>Explore the architecture wiki »</strong></a>
     <br />
     <br />
-    <a href="https://nbaproject-blazor-app.azurewebsites.net/">View Demo</a>
+    <a href="https://nbaprojectblazor.net">View Demo</a>
     ·
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/issues">TODO:Report Bug</a>
     ·
@@ -195,5 +195,5 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 [issues-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/issues
 [license-shield]: https://img.shields.io/github/license/michaelhwillingham/NBAProject.Blazor.svg?style=for-the-badge
 [license-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/blob/master/LICENSE.txt
-[ci-shield]: https://img.shields.io/github/workflow/status/michaelhwillingham/NBAProject.Blazor/CI-Build?style=for-the-badge
+[ci-shield]: https://img.shields.io/github/workflow/status/michaelhwillingham/NBAProject.Blazor/Build-And-Deploy?style=for-the-badge
 [ci-url]: https://github.com/michaelhwillingham/NBAProject.Blazor/actions
