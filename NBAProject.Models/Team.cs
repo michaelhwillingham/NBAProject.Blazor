@@ -9,9 +9,7 @@ namespace NBAProject.Models
         public int TeamID { get; set; }
 
         public string Key { get; set; }
-        
-        public bool Active { get; set; }
-        
+
         public string City { get; set; }
         
         public string Name { get; set; }
