@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NBAProject.Services;
 
 namespace NBAProject.Blazor
 {
@@ -21,6 +22,10 @@ namespace NBAProject.Blazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddHttpClient();
+            services.AddScoped<IApiService, ApiService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
