@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using NBAProject.Models;
+using Newtonsoft.Json;
 
 namespace NBAProject.Services
 {
@@ -13,13 +16,15 @@ namespace NBAProject.Services
             _httpClient = httpClient;
         }
 
-        public async Task<string> GetAllTeamsAsync()
+        public async Task<IEnumerable<Team>> GetAllTeamsAsync()
         {
             var request = GenerateHttpRequestMessage("fantasy/json/Teams");
             
             using var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            var responseString = await response.Content.ReadAsStringAsync();
+            
+            return JsonConvert.DeserializeObject<IEnumerable<Team>>(responseString);
         }
 
         public async Task<string> GetAllPlayersAsync()

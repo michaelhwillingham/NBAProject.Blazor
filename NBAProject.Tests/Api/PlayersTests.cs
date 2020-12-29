@@ -1,9 +1,7 @@
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Moq;
 using NBAProject.Services;
-using Newtonsoft.Json;
 using Shouldly;
 
 namespace NBAProject.Tests.Api
@@ -21,7 +19,7 @@ namespace NBAProject.Tests.Api
         public async Task ShouldGetAllPlayers()
         {
             var players = await _apiService.GetAllPlayersAsync();
-            Console.WriteLine(JsonConvert.SerializeObject(players, Formatting.Indented));
+
             players.ShouldNotBeNull();
         }
     }
