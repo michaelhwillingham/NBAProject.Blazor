@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NBAProject.Services;
+using Microsoft.Extensions.Options;
+using NBAProject.Services.MongoDb;
 
 namespace NBAProject.Blazor
 {
@@ -23,8 +24,10 @@ namespace NBAProject.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddHttpClient();
-            services.AddScoped<IApiService, ApiService>();
+            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+
+            services.AddSingleton<IMongoDbSettings>(serviceProvider =>
+                serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
             
         }
 
