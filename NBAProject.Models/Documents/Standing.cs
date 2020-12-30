@@ -29,7 +29,7 @@ namespace NBAProject.Models.Documents
 
         public int Losses { get; set; }
 
-        [BsonRepresentation(BsonType.Decimal128, AllowTruncation=true)]
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal Percentage { get; set; }
 
         public int ConferenceWins { get; set; }
@@ -51,13 +51,13 @@ namespace NBAProject.Models.Documents
         public int LastTenWins { get; set; }
 
         public int LastTenLosses { get; set; }
-        
+
         public decimal PointsPerGameFor { get; set; }
 
         public decimal PointsPerGameAgainst { get; set; }
 
         public int Streak { get; set; }
-        
+
         public double GamesBack { get; set; }
 
         public string StreakDescription { get; set; }

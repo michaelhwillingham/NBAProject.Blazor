@@ -1,5 +1,3 @@
-using System.IO;
-using System.Linq;
 using Cake.Common.Diagnostics;
 using Cake.Core;
 using Cake.Frosting;

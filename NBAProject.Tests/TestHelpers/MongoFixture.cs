@@ -1,6 +1,5 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using NBAProject.Models;
 using NBAProject.Models.Documents;
 using NBAProject.Services.MongoDb;
 

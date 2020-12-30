@@ -17,7 +17,7 @@ namespace Build.Tasks
                 .ToList();
             Console.WriteLine($"{projects.Count.ToString()} project(s) discovered.");
             Console.WriteLine();
-        
+
             foreach (var project in projects)
             {
                 Console.WriteLine($"Project: {project.Split("/").Last()}");

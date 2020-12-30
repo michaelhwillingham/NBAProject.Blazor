@@ -1,8 +1,8 @@
 using System;
 using System.Configuration;
 using System.IO;
-using Newtonsoft.Json;
 using Cake.Frosting;
+using Newtonsoft.Json;
 
 namespace Build.Tasks
 {
@@ -16,9 +16,10 @@ namespace Build.Tasks
             Directory.SetCurrentDirectory("NBAProject.Tests");
             AddOrUpdateAppSetting("MongoDbSettings:ConnectionString", context.MongoConnectionString);
             AddOrUpdateAppSetting("MongoDbSettings:DatabaseName", context.MongoTestDatabaseName);
-            
+
             Console.WriteLine("Updating NBAProject.Blazor/appsettings.json");
-            Directory.SetCurrentDirectory(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).ToString(), "NBAProject.Blazor"));
+            Directory.SetCurrentDirectory(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).ToString(),
+                "NBAProject.Blazor"));
             AddOrUpdateAppSetting("MongoDbSettings:ConnectionString", context.MongoConnectionString);
             AddOrUpdateAppSetting("MongoDbSettings:DatabaseName",
                 context.IsGitHubActions ? context.MongoProdDatabaseName : context.MongoDevDatabaseName);

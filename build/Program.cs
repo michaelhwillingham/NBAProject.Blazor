@@ -1,9 +1,17 @@
+using System.Threading.Tasks;
 using Cake.Frosting;
 
 namespace Build
 {
     public class Program : IFrostingStartup
     {
+        public void Configure(ICakeServices services)
+        {
+            services.UseContext<BuildContext>();
+            services.UseLifetime<Lifetime>();
+            services.UseWorkingDirectory("..");
+        }
+
         public static int Main(string[] args)
         {
             var host = new CakeHostBuilder()
@@ -12,13 +20,6 @@ namespace Build
                 .Build();
 
             return host.Run();
-        }
-
-        public void Configure(ICakeServices services)
-        {
-            services.UseContext<BuildContext>();
-            services.UseLifetime<Lifetime>();
-            services.UseWorkingDirectory("..");
         }
     }
 }

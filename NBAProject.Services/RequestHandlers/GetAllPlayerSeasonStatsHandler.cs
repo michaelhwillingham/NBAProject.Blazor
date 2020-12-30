@@ -8,7 +8,8 @@ using NBAProject.Services.MongoDb;
 
 namespace NBAProject.Services.RequestHandlers
 {
-    public class GetAllPlayerSeasonStatsHandler : IRequestHandler<GetAllPlayerSeasonStats, IEnumerable<PlayerSeasonStat>>
+    public class
+        GetAllPlayerSeasonStatsHandler : IRequestHandler<GetAllPlayerSeasonStats, IEnumerable<PlayerSeasonStat>>
     {
         private readonly IMongoRepository<PlayerSeasonStat> _mongo;
 
@@ -17,7 +18,8 @@ namespace NBAProject.Services.RequestHandlers
             _mongo = mongo;
         }
 
-        public async Task<IEnumerable<PlayerSeasonStat>> Handle(GetAllPlayerSeasonStats request, CancellationToken token)
+        public async Task<IEnumerable<PlayerSeasonStat>> Handle(GetAllPlayerSeasonStats request,
+            CancellationToken token)
         {
             return await _mongo.AllDocumentsToListAsync();
         }
