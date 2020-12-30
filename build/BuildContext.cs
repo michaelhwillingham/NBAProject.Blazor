@@ -6,13 +6,6 @@ namespace Build
 {
     public class BuildContext : FrostingContext
     {
-        public string MsBuildConfiguration { get; }
-        public string MongoConnectionString { get; }
-        public string MongoDevDatabaseName { get; }
-        public string MongoTestDatabaseName { get; }
-        public string MongoProdDatabaseName { get; }
-        public bool IsGitHubActions { get; }
-
         public BuildContext(ICakeContext context) : base(context)
         {
             MsBuildConfiguration = context.Argument("configuration", "Debug");
@@ -22,5 +15,12 @@ namespace Build
             MongoProdDatabaseName = context.Argument("mongoProdDatabaseName", "nbaprojectblazor-db-PROD");
             IsGitHubActions = context.Argument("isGitHubActions", false);
         }
+
+        public string MsBuildConfiguration { get; }
+        public string MongoConnectionString { get; }
+        public string MongoDevDatabaseName { get; }
+        public string MongoTestDatabaseName { get; }
+        public string MongoProdDatabaseName { get; }
+        public bool IsGitHubActions { get; }
     }
 }

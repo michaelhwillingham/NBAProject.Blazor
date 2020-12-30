@@ -21,14 +21,6 @@ namespace NBAProject.Services.MongoDb
             _collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
         }
 
-        private protected string GetCollectionName(Type documentType)
-        {
-            return ((BsonCollectionAttribute) documentType.GetCustomAttributes(
-                    typeof(BsonCollectionAttribute),
-                    true)
-                .FirstOrDefault())?.CollectionName;
-        }
-
         public virtual IQueryable<TDocument> AsQueryable()
         {
             return _collection.AsQueryable();
@@ -147,6 +139,14 @@ namespace NBAProject.Services.MongoDb
         public Task DeleteManyAsync(Expression<Func<TDocument, bool>> filterExpression)
         {
             return Task.Run(() => _collection.DeleteManyAsync(filterExpression));
+        }
+
+        private protected string GetCollectionName(Type documentType)
+        {
+            return ((BsonCollectionAttribute) documentType.GetCustomAttributes(
+                    typeof(BsonCollectionAttribute),
+                    true)
+                .FirstOrDefault())?.CollectionName;
         }
     }
 }

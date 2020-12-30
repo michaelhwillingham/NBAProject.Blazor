@@ -11,16 +11,18 @@ namespace Build.Tasks
     [Dependency(typeof(Test))]
     public sealed class Publish : FrostingTask<BuildContext>
     {
-        public override bool ShouldRun(BuildContext context) 
-            => context.MsBuildConfiguration == "Release";
+        public override bool ShouldRun(BuildContext context)
+        {
+            return context.MsBuildConfiguration == "Release";
+        }
 
         public override void Run(BuildContext context)
         {
             var projectDirectory = Directory
                 .GetDirectories(Directory.GetCurrentDirectory()).SingleOrDefault(x =>
-                    Enumerable.Last<string>(x.Split("/")).Equals("NBAProject.Blazor"));
+                    x.Split("/").Last().Equals("NBAProject.Blazor"));
             Console.WriteLine($"Project path: {projectDirectory}");
-            
+
             Console.WriteLine("Publishing NBAProject.Blazor");
             context.DotNetCorePublish($"{projectDirectory}/NBAProject.Blazor.csproj", new DotNetCorePublishSettings
             {

@@ -23,11 +23,12 @@ namespace Build.Tasks
                 Console.WriteLine($"Navigating to directory {project}");
                 var projectName = project.Split("/").Last();
                 Directory.SetCurrentDirectory($"{Directory.GetCurrentDirectory()}/{projectName}");
-                
-                context.DotNetCoreTool($"fixie --configuration {context.MsBuildConfiguration} --no-build --framework net5.0");
+
+                context.DotNetCoreTool(
+                    $"fixie --configuration {context.MsBuildConfiguration} --no-build --framework net5.0");
                 Console.WriteLine();
             }
-            
+
             Directory.SetCurrentDirectory("..");
         }
     }

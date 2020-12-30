@@ -84,7 +84,7 @@ namespace NBAProject.Tests.Services
             playerSeasonStats.Sum(x => x.Rebounds).ShouldBeGreaterThan(0);
             playerSeasonStats.Sum(x => x.Assists).ShouldBeGreaterThan(0);
         }
-        
+
         public async Task ShouldGetSeasonStatsByPlayerID()
         {
             var playerMongo = new MongoFixture<Player>().MongoRepository;
@@ -92,11 +92,11 @@ namespace NBAProject.Tests.Services
 
             var statsMongo = new MongoFixture<PlayerSeasonStat>().MongoRepository;
 
-            var request = new GetSeasonStatsByPlayerId{PlayerID = lukaDoncic.PlayerID};
+            var request = new GetSeasonStatsByPlayerId {PlayerID = lukaDoncic.PlayerID};
             var handler = new GetSeasonStatsByPlayerIdHandler(statsMongo);
 
             var lukaDoncicStats = await handler.Handle(request, CancellationToken.None);
-            
+
             lukaDoncicStats.Name.ShouldBe("Luka Doncic");
             lukaDoncicStats.Points.ShouldNotBe(0);
             lukaDoncicStats.Rebounds.ShouldNotBe(0);
