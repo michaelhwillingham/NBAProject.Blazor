@@ -94,7 +94,8 @@ TODO:Add story about project here.
 * [.NET 5](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five)
 * [Blazor Server](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
 * [Mudblazor](https://mudblazor.com/)
-* [SportsDataIO NBA API](https://sportsdata.io/developers/api-documentation/nba)
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+* [FantasyData NBA API](https://fantasydata.com/api/api-documentation/nba)
 
 
 
@@ -168,12 +169,12 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 ### Application Libraries
-* [Json.NET](https://www.newtonsoft.com/json)
+* [MediatR](https://github.com/jbogard/MediatR)
 ### CI/CD
 * [Cake Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
 * [GitHub Actions](https://github.com/features/actions)
 * [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/)
-### Testing
+### Testing Libraries
 * [Fixie](https://fixie.github.io/)
 * [Shouldly](https://shouldly.io/)
 ### Other
