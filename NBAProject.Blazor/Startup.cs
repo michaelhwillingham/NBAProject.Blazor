@@ -29,7 +29,9 @@ namespace NBAProject.Blazor
 
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
                 serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-            
+
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
+
             services.AddMediatR(typeof(Startup));
         }
 
