@@ -18,7 +18,7 @@ jobs:
       - name: Execute build script (Debug)
         id: build_debug
         if: steps.get_branch.outputs.branch != 'main'
-        run: bash build.sh --configuration=Debug
+        run: bash build.sh --configuration=Debug --isGitHubActions=true --mongoConnectionString=${{ secrets.MONGODB_CONNECTION_STRING }} --mongoTestDatabaseName=${{ secrets.MONGODB_TEST_DATABASE }} --mongoProdDatabaseName=${{ secrets.MONGODB_PROD_DATABASE }}
       
       - name: Execute build script (Release)
         id: build_release
