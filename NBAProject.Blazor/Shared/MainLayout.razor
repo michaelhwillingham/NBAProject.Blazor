@@ -1,17 +1,40 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <div class="content px-4">
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Fixed="true">
+        <MudIconButton Icon="@Icons.Material.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer"/>
+        <MudText Class="pl-2" Href="/" Typo="Typo.h6" Link="">NBAProject.Blazor</MudText>
+        <MudAppBarSpacer/>
+        <MudIconButton Icon="@Icons.Custom.GitHub" Color="Color.Inherit" Link="https://github.com/michaelhwillingham/NBAProject.Blazor"/>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@open" Elevation="25">
+        <MudNavMenu Class="pt-4">
+            <MudNavLink Href="/" Icon="@Icons.Material.Home">Home</MudNavLink>
+            <MudNavLink Href="/teams" Icon="@Icons.Material.SportsBasketball">Teams</MudNavLink>
+            <MudNavLink Href="/standings" Icon="@Icons.Material.ViewList">Standings</MudNavLink>
+            <MudNavLink Href="/players" Icon="@Icons.Material.Groups">Players</MudNavLink>
+            <MudNavGroup Title="Statistics" Icon="@Icons.Material.TrendingUp" Expanded="true">
+                <MudNavLink Href="/playerStats">Individual</MudNavLink>
+                <MudNavLink Href="/teamStats">Team</MudNavLink>
+            </MudNavGroup>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent Class="pt-16 px-16">
+        <MudContainer Class="mt-6">
             @Body
-        </div>
-    </div>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+@code {
+    bool open = true;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+}

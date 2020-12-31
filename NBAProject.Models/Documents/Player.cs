@@ -36,7 +36,7 @@ namespace NBAProject.Models.Documents
 
         public string PhotoUrl { get; set; }
 
-        public int Experience { get; set; }
+        public int? Experience { get; set; }
 
         public string InjuryStatus { get; set; }
 

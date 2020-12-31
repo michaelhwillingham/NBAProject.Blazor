@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MudBlazor;
+using MudBlazor.Services;
 using NBAProject.Services.MongoDb;
 
 namespace NBAProject.Blazor
@@ -24,6 +26,10 @@ namespace NBAProject.Blazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddMudBlazorDialog();
+            services.AddMudBlazorSnackbar();
+            services.AddMudBlazorResizeListener();
 
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
 
