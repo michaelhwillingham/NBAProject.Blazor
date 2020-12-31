@@ -1,0 +1,91 @@
+@page "/standings"
+@using NBAProject.Models.Documents
+@using NBAProject.Models.Queries
+@using System.Globalization
+
+<MudText Typo="Typo.h3">Standings</MudText>
+
+@if (WesternConferenceStandings != null && EasternConferenceStandings != null)
+{
+    <MudText Typo="Typo.h6">Western Conference</MudText>
+    <MudSimpleTable FixedHeader="true" Class="mb-8">
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>%</th>
+            <th>Streak</th>
+            <th>Last 10</th>
+            <th>Games Back</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var team in WesternConferenceStandings)
+        {
+            <tr>
+                <td>@team.ConferenceRank.ToString()</td>
+                <td>@team.City @team.Name</td>
+                <td>@team.Wins.ToString()</td>
+                <td>@team.Losses.ToString()</td>
+                <td>@team.Percentage.ToString(CultureInfo.InvariantCulture)</td>
+                <td>@team.StreakDescription</td>
+                <td>@team.LastTenWins.ToString()-@team.LastTenLosses.ToString()</td>
+                <td>@team.GamesBack.ToString(CultureInfo.InvariantCulture)</td>
+            </tr>
+        }
+        </tbody>
+    </MudSimpleTable>
+    <MudText Typo="Typo.h6">Eastern Conference</MudText>
+    <MudSimpleTable FixedHeader="true" Class="mb-8">
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>%</th>
+            <th>Streak</th>
+            <th>Last 10</th>
+            <th>Games Back</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var team in EasternConferenceStandings)
+        {
+            <tr>
+                <td>@team.ConferenceRank.ToString()</td>
+                <td>@team.City @team.Name</td>
+                <td>@team.Wins.ToString()</td>
+                <td>@team.Losses.ToString()</td>
+                <td>@team.Percentage.ToString(CultureInfo.InvariantCulture)</td>
+                <td>@team.StreakDescription</td>
+                <td>@team.LastTenWins.ToString()-@team.LastTenLosses.ToString()</td>
+                <td>@team.GamesBack.ToString(CultureInfo.InvariantCulture)</td>
+            </tr>
+        }
+        </tbody>
+    </MudSimpleTable>
+}
+
+@code {
+    private List<Standing> WesternConferenceStandings { get; set; }
+    private List<Standing> EasternConferenceStandings { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Mediator.Send(new GetStandings());
+        var standingsList = response.ToList();
+        
+        WesternConferenceStandings = standingsList
+            .Where(x => x.Conference == "Western")
+            .OrderBy(x => x.ConferenceRank)
+            .ToList();
+
+        EasternConferenceStandings = standingsList
+            .Where(x => x.Conference == "Eastern")
+            .OrderBy(x => x.ConferenceRank)
+            .ToList();
+    }
+}
