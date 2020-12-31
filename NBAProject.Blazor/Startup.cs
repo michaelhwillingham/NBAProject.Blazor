@@ -1,3 +1,4 @@
+using System;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,8 @@ namespace NBAProject.Blazor
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
-            services.AddMediatR(typeof(Startup));
+            var servicesAssembly = AppDomain.CurrentDomain.Load("NBAProject.Services");
+            services.AddMediatR(servicesAssembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
