@@ -6,7 +6,7 @@ namespace NBAProject.Blazor
 {
     public class Program
     {
-        public async static Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             await CreateHostBuilder(args).Build().RunAsync();
         }

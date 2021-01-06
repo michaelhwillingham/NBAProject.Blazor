@@ -12,7 +12,6 @@
     <ItemGroup>
       <PackageReference Include="Fixie" Version="2.2.2" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-      <PackageReference Include="Moq" Version="4.15.2" />
       <PackageReference Include="Shouldly" Version="4.0.3" />
       <DotNetCliToolReference Include="Fixie.Console" Version="2.2.2" />
     </ItemGroup>

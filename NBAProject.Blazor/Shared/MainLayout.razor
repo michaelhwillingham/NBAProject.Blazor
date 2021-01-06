@@ -2,18 +2,18 @@
 
 <MudLayout>
     <MudAppBar Color="Color.Primary" Fixed="true">
-        <MudIconButton Icon="@Icons.Material.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer"/>
+        <MudIconButton Icon="@Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer"/>
         <MudText Class="pl-2" Href="/" Typo="Typo.h6" Link="">NBAProject.Blazor</MudText>
         <MudAppBarSpacer/>
-        <MudIconButton Icon="@Icons.Custom.GitHub" Color="Color.Inherit" Link="https://github.com/michaelhwillingham/NBAProject.Blazor"/>
+        <MudIconButton Icon="@Brands.GitHub" Color="Color.Inherit" Link="https://github.com/michaelhwillingham/NBAProject.Blazor"/>
     </MudAppBar>
-    <MudDrawer @bind-Open="@open" Elevation="25">
+    <MudDrawer @bind-Open="@open" Clipped="true" Elevation="25">
         <MudNavMenu Class="pt-4">
-            <MudNavLink Href="/" Icon="@Icons.Material.Home">Home</MudNavLink>
-            <MudNavLink Href="/teams" Icon="@Icons.Material.SportsBasketball">Teams</MudNavLink>
-            <MudNavLink Href="/standings" Icon="@Icons.Material.ViewList">Standings</MudNavLink>
-            <MudNavLink Href="/players" Icon="@Icons.Material.Groups">Players</MudNavLink>
-            <MudNavGroup Title="Statistics" Icon="@Icons.Material.TrendingUp" Expanded="true">
+            <MudNavLink Href="/" Icon="@Filled.Home">Home</MudNavLink>
+            <MudNavLink Href="/teams" Icon="@Filled.SportsBasketball">Teams</MudNavLink>
+            <MudNavLink Href="/standings" Icon="@Filled.ViewList">Standings</MudNavLink>
+            <MudNavLink Href="/players" Icon="@Filled.Groups">Players</MudNavLink>
+            <MudNavGroup Title="Statistics" Icon="@Filled.TrendingUp" Expanded="true">
                 <MudNavLink Href="/playerStats">Individual</MudNavLink>
                 <MudNavLink Href="/teamStats">Team</MudNavLink>
             </MudNavGroup>
@@ -37,4 +37,5 @@
     {
         open = !open;
     }
+
 }
