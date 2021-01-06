@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MudBlazor;
 using MudBlazor.Services;
-using NBAProject.Services.MongoDb;
+using NBAProject.Services.MySportsFeeds;
 
 namespace NBAProject.Blazor
 {
@@ -32,12 +32,12 @@ namespace NBAProject.Blazor
             services.AddMudBlazorSnackbar();
             services.AddMudBlazorResizeListener();
 
-            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+            services.Configure<ApiSettings>(Configuration.GetSection("ApiSettings"));
 
-            services.AddSingleton<IMongoDbSettings>(serviceProvider =>
-                serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddSingleton<IApiSettings>(serviceProvider =>
+                serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value);
 
-            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
+            services.AddScoped(typeof(IApiService<>), typeof(ApiService<>));
 
             var servicesAssembly = AppDomain.CurrentDomain.Load("NBAProject.Services");
             services.AddMediatR(servicesAssembly);

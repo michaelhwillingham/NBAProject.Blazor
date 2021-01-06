@@ -1,0 +1,36 @@
+namespace NBAProject.Models.MySportsFeeds.Enums
+{
+    public enum TeamAbbreviation
+    {
+        Atl,
+        Bos,
+        Bro,
+        Cha,
+        Chi,
+        Cle,
+        Dal,
+        Den,
+        Det,
+        Gsw,
+        Hou,
+        Ind,
+        Lac,
+        Lal,
+        Mem,
+        Mia,
+        Mil,
+        Min,
+        Nop,
+        Nyk,
+        Okl,
+        Orl,
+        Phi,
+        Phx,
+        Por,
+        Sac,
+        Sas,
+        Tor,
+        Uta,
+        Was
+    }
+}

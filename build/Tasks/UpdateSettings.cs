@@ -10,19 +10,25 @@ namespace Build.Tasks
     [Dependency(typeof(Clean))]
     public class UpdateSettings : FrostingTask<BuildContext>
     {
+        public override bool ShouldRun(BuildContext context)
+        {
+            return context.IsGitHubActions;
+        }
+        
         public override void Run(BuildContext context)
         {
             Console.WriteLine("Updating NBAProject.Tests/appsettings.json");
             Directory.SetCurrentDirectory("NBAProject.Tests");
-            AddOrUpdateAppSetting("MongoDbSettings:ConnectionString", context.MongoConnectionString);
-            AddOrUpdateAppSetting("MongoDbSettings:DatabaseName", context.MongoTestDatabaseName);
+            AddOrUpdateAppSetting("ApiSettings:BaseUrl", context.ApiBaseUrl);
+            AddOrUpdateAppSetting("ApiSettings:Username", context.ApiUsername);
+            AddOrUpdateAppSetting("ApiSettings:Password", context.ApiPassword);
 
             Console.WriteLine("Updating NBAProject.Blazor/appsettings.json");
-            Directory.SetCurrentDirectory(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).ToString(),
+            Directory.SetCurrentDirectory(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())?.ToString()!,
                 "NBAProject.Blazor"));
-            AddOrUpdateAppSetting("MongoDbSettings:ConnectionString", context.MongoConnectionString);
-            AddOrUpdateAppSetting("MongoDbSettings:DatabaseName",
-                context.IsGitHubActions ? context.MongoProdDatabaseName : context.MongoDevDatabaseName);
+            AddOrUpdateAppSetting("ApiSettings:BaseUrl", context.ApiBaseUrl);
+            AddOrUpdateAppSetting("ApiSettings:Username", context.ApiUsername);
+            AddOrUpdateAppSetting("ApiSettings:Password", context.ApiPassword);
         }
 
         private static void AddOrUpdateAppSetting<T>(string key, T value)
@@ -39,10 +45,7 @@ namespace Build.Tasks
                     var keyPath = key.Split(":")[1];
                     if (jsonObj != null) jsonObj[sectionPath][keyPath] = value;
                 }
-                else
-                {
-                    if (jsonObj != null) jsonObj[sectionPath] = value;
-                }
+                else if (jsonObj != null) jsonObj[sectionPath] = value;
 
                 var output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
                 File.WriteAllText(filePath, output);

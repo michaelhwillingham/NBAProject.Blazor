@@ -1,34 +1,58 @@
 @page "/teams"
-@using NBAProject.Models.Documents
-@using NBAProject.Models.Queries
+@using NBAProject.Models.MySportsFeeds.Team
+@using NBAProject.Models.Requests
 
 <MudText Typo="Typo.h3">Teams</MudText>
 
-@if (TeamsList != null)
+@if (TeamElements == null)
 {
-    foreach (var team in TeamsList)
-    {
-        <MudCard Class="mt-8 mb-8" Elevation="25">
-            <MudCardMedia Image="@team.WikipediaLogoUrl" Height="300" Style="background-size: contain" />
-            <MudCardContent>
-                <MudText Typo="Typo.h5">@team.City @team.Name</MudText>
-                <MudText Typo="Typo.body2">@team.Conference Conference</MudText>
-                <MudText Typo="Typo.body2">@team.Division Division</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Roster</MudButton>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Team Stats</MudButton>
-            </MudCardActions>
-        </MudCard>
-    }
-}
+    <MudGrid>
+        @for (var i = 1; i < 30; i++)
+        {
+            <MudItem xs="12" s="12" md="4" lg="3" xl="2">
+                <MudCard Class="mt-8 mb-8" Elevation="25">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Animation="Animation.Wave" Height="300px"/>
+                    <MudCardContent>
+                        <MudSkeleton Animation="Animation.Wave" Width="60%" Height="42px"/>
+                        <MudSkeleton Animation="Animation.Wave" Width="40%"/>
+                        <MudSkeleton Animation="Animation.Wave" Width="40%"/>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudSkeleton Width="10%" Height="40px" Class="ml-2"/>
+                        <MudSkeleton Width="20%" Height="40px" Class="ml-3"/>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>        }
+    </MudGrid>}
+
+@if (TeamElements != null)
+{
+    <MudGrid>
+        @foreach (var team in TeamElements)
+        {
+            <MudItem xs="12" s="6" md="4" lg="3" xl="2">
+                <MudCard Class="mt-8 mb-8" Elevation="25">
+                    <MudCardMedia Image="@team.TeamDetails.OfficialLogoImageSrc.ToString()" Height="300" Style="background-size: contain"/>
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">@team.TeamDetails.City @team.TeamDetails.Name</MudText>
+                        <MudText Typo="Typo.body2">@team.ConferenceRank.ConferenceName Conference</MudText>
+                        <MudText Typo="Typo.body2">@team.DivisionRank.DivisionName Division</MudText>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary">Roster</MudButton>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary">Team Stats</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>        }
+    </MudGrid>}
 
 @code {
-    private List<Team> TeamsList { get; set; }
-    
+    private TeamElement[] TeamElements { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        var response = await Mediator.Send(new GetAllTeams());
-        TeamsList = response.OrderBy(x => x.City).ToList();
+        var response = await Mediator.Send(new GetTeams {Stats = "none"});
+        TeamElements = response.Teams.OrderBy(x => x.TeamDetails.City).ToArray();
     }
+
 }
