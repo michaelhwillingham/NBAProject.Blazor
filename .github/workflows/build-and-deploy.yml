@@ -18,12 +18,12 @@ jobs:
       - name: Execute build script (Debug)
         id: build_debug
         if: steps.get_branch.outputs.branch != 'main'
-        run: bash build.sh --configuration=Debug --isGitHubActions=true --mongoConnectionString=${{ secrets.MONGODB_CONNECTION_STRING }} --mongoTestDatabaseName=${{ secrets.MONGODB_TEST_DATABASE }} --mongoProdDatabaseName=${{ secrets.MONGODB_PROD_DATABASE }}
+        run: bash build.sh --configuration=Debug --isGitHubActions=true --apiBaseUrl=${{ secrets.API_BASE_URL }} --apiUsername=${{ secrets.API_USERNAME }} --apiPassword=${{ secrets.API_PASSWORD }}
       
       - name: Execute build script (Release)
         id: build_release
         if: steps.get_branch.outputs.branch == 'main'
-        run: bash build.sh --configuration=Release --isGitHubActions=true --mongoConnectionString=${{ secrets.MONGODB_CONNECTION_STRING }} --mongoTestDatabaseName=${{ secrets.MONGODB_TEST_DATABASE }} --mongoProdDatabaseName=${{ secrets.MONGODB_PROD_DATABASE }}
+        run: bash build.sh --configuration=Release --isGitHubActions=true --apiBaseUrl=${{ secrets.API_BASE_URL }} --apiUsername=${{ secrets.API_USERNAME }} --apiPassword=${{ secrets.API_PASSWORD }}
       
       - name: Publish build artifact
         id: publish_artifact

@@ -1,0 +1,183 @@
+@page "/standings"
+@using NBAProject.Infrastructure.Extensions
+@using NBAProject.Models.MySportsFeeds.Team
+@using NBAProject.Models.Requests
+@using System.Globalization
+
+<MudText Typo="Typo.h3">Standings</MudText>
+@if (LastUpdated != null)
+{
+    <MudText Typo="Typo.subtitle2" GutterBottom="true">
+        Last updated @LastUpdated.Value.DateTime.ToTimeAgo()
+    </MudText>}
+
+@if (WesternConferenceStandings != null && EasternConferenceStandings != null)
+{
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="6" lg="6" xl="6">
+            <MudText Typo="Typo.h6" GutterBottom="true">Western Conference</MudText>
+            <MudSimpleTable Class="mb-8" Hover="true" FixedHeader="true">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>%</th>
+                    <th>GB</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var team in WesternConferenceStandings)
+                {
+                    <tr>
+                        <td>@team.ConferenceRank.Rank.ToString()</td>
+                        <td>@team.TeamDetails.City @team.TeamDetails.Name</td>
+                        <td>@team.Stats.Standings.Wins.ToString()</td>
+                        <td>@team.Stats.Standings.Losses.ToString()</td>
+                        <td>@team.Stats.Standings.WinPercentage.ToString(CultureInfo.InvariantCulture)</td>
+                        <td>@team.ConferenceRank.GamesBack.ToString(CultureInfo.InvariantCulture)</td>
+                    </tr>
+                }
+                </tbody>
+            </MudSimpleTable>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="6" lg="6" xl="6">
+            <MudText Typo="Typo.h6" GutterBottom="true">Eastern Conference</MudText>
+            <MudSimpleTable Class="mb-8" Hover="true" FixedHeader="true">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>%</th>
+                    <th>GB</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var team in EasternConferenceStandings)
+                {
+                    <tr>
+                        <td>@team.ConferenceRank.Rank.ToString()</td>
+                        <td>@team.TeamDetails.City @team.TeamDetails.Name</td>
+                        <td>@team.Stats.Standings.Wins.ToString()</td>
+                        <td>@team.Stats.Standings.Losses.ToString()</td>
+                        <td>@team.Stats.Standings.WinPercentage.ToString(CultureInfo.InvariantCulture)</td>
+                        <td>@team.ConferenceRank.GamesBack.ToString(CultureInfo.InvariantCulture)</td>
+                    </tr>
+                }
+                </tbody>
+            </MudSimpleTable>
+        </MudItem>
+    </MudGrid>}
+else
+{
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="6" lg="6" xl="6">
+            <MudText Typo="Typo.h6" GutterBottom="true">Western Conference</MudText>
+            <MudSimpleTable Class="mb-8" Hover="true" FixedHeader="true">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>%</th>
+                    <th>GB</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (var i = 1; i < 15; i++)
+                {
+                    <tr>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </MudSimpleTable>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="6" lg="6" xl="6">
+            <MudText Typo="Typo.h6" GutterBottom="true">Eastern Conference</MudText>
+            <MudSimpleTable Class="mb-8" Hover="true" FixedHeader="true">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>%</th>
+                    <th>GB</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (var i = 1; i < 15; i++)
+                {
+                    <tr>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                        <td>
+                            <MudSkeleton Width="100%"/>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </MudSimpleTable>
+        </MudItem>
+    </MudGrid>}
+
+@code {
+    private TeamElement[] WesternConferenceStandings { get; set; }
+    private TeamElement[] EasternConferenceStandings { get; set; }
+    private DateTimeOffset? LastUpdated { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Mediator.Send(new GetTeams());
+
+        LastUpdated = response.LastUpdatedOn.DateTime;
+
+        var standingsList = response.Teams;
+
+        WesternConferenceStandings = standingsList
+            .Where(x => x.ConferenceRank.ConferenceName == "Western")
+            .OrderBy(x => x.ConferenceRank.Rank)
+            .ToArray();
+
+        EasternConferenceStandings = standingsList
+            .Where(x => x.ConferenceRank.ConferenceName == "Eastern")
+            .OrderBy(x => x.ConferenceRank.Rank)
+            .ToArray();
+    }
+
+}
