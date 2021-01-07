@@ -1,0 +1,39 @@
+@using NBAProject.Models.MySportsFeeds.Team
+@using System.Globalization
+
+<MudText Typo="Typo.h6" GutterBottom="true">@Title</MudText>
+<MudSimpleTable Class="mb-8" Hover="true" FixedHeader="true">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Team</th>
+            <th>W</th>
+            <th>L</th>
+            <th>%</th>
+            <th>GB</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in TeamElements)
+        {
+            <tr>
+                <td>@team.ConferenceRank.Rank.ToString()</td>
+                <td>@team.TeamDetails.City @team.TeamDetails.Name</td>
+                <td>@team.Stats.Standings.Wins.ToString()</td>
+                <td>@team.Stats.Standings.Losses.ToString()</td>
+                <td>@team.Stats.Standings.WinPercentage.ToString(CultureInfo.InvariantCulture)</td>
+                <td>@team.ConferenceRank.GamesBack.ToString(CultureInfo.InvariantCulture)</td>
+            </tr>
+        }
+    </tbody>
+</MudSimpleTable>
+
+@code {
+    
+    [Parameter]
+    public string Title { get; set; }
+    
+    [Parameter]
+    public TeamElement[] TeamElements { get; set; }
+    
+}

@@ -1,5 +1,23 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<MudGrid Class="pt-16 pb-16">
+    <MudItem Class="mt-4" xs="12" sm="12" md="12" lg="12" xl="12">
+        <div class="d-flex justify-center">
+            <MudElement HtmlTag="img" src="logo.png" Height="auto" Width="35%"/>
+        </div>
+    </MudItem>
+    <MudItem xs="12" sm="12" md="12" lg="12" xl="12">
+        <div class="d-flex justify-center">
+            <MudText Typo="Typo.h4" Color="Color.Primary" Style="font-family: Gugi, Roboto, serif; text-align: center; font-size: 8vw;">
+                NBAProject.Blazor
+            </MudText>
+        </div>
+    </MudItem>
+    <MudItem xs="12" sm="12" md="12" lg="12" xl="12">
+        <div class="d-flex justify-center">
+            <MudText Typo="Typo.h5" Color="Color.Inherit" Style="text-align: center; font-size: 3.5vw; max-width: 80%">
+                A .NET 5 Blazor Server web application to explore NBA statistics, rosters, and odds.
+            </MudText>
+        </div>
+    </MudItem>
+</MudGrid>
