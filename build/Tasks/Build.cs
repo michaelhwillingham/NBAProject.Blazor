@@ -13,8 +13,6 @@ namespace Build.Tasks
     {
         public override void Run(BuildContext context)
         {
-            Directory.SetCurrentDirectory(Directory.GetParent(Directory.GetCurrentDirectory())?.ToString()!);
-
             var projectDirectories = Directory.GetDirectories(Directory.GetCurrentDirectory())
                 .Where(x => x.Split("/").Last().StartsWith("NBAProject"));
 
