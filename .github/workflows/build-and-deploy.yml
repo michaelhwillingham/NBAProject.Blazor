@@ -10,20 +10,24 @@ jobs:
         id: checkout
         uses: actions/checkout@v2
       
-      - name: Get branch
-        id: get_branch
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      - name: Variable Substitution for appsettings.json
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'NBAProject.Blazor/appsettings.json,  NBAProject.Tests/appsettings.test.json'
+        env:
+          ApiSettings.BaseUrl: ${{ secrets.API_BASE_URL }}
+          ApiSettings.ApiUsername: ${{ secrets.API_USERNAME }}
+          ApiSettings.ApiPassword: ${{ secrets.API_PASSWORD }}
        
       - name: Execute build script (Debug)
         id: build_debug
         if: steps.get_branch.outputs.branch != 'main'
-        run: bash build.sh --configuration=Debug --isGitHubActions=true --apiBaseUrl=${{ secrets.API_BASE_URL }} --apiUsername=${{ secrets.API_USERNAME }} --apiPassword=${{ secrets.API_PASSWORD }}
+        run: bash build.sh --configuration=Debug --isGitHubActions=true
       
       - name: Execute build script (Release)
         id: build_release
         if: steps.get_branch.outputs.branch == 'main'
-        run: bash build.sh --configuration=Release --isGitHubActions=true --apiBaseUrl=${{ secrets.API_BASE_URL }} --apiUsername=${{ secrets.API_USERNAME }} --apiPassword=${{ secrets.API_PASSWORD }}
+        run: bash build.sh --configuration=Release --isGitHubActions=true
       
       - name: Publish build artifact
         id: publish_artifact

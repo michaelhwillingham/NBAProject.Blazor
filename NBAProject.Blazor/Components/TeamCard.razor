@@ -1,0 +1,41 @@
+@using NBAProject.Models.MySportsFeeds.Team
+
+<MudCard Class="mb-4" Elevation="25">
+    <MudCardMedia Image="@Team.TeamDetails.OfficialLogoImageSrc.ToString()" Height="300" Style="background-size: contain"/>
+
+    <MudCardContent>
+        <MudText Typo="Typo.h6">@Team.TeamDetails.City @Team.TeamDetails.Name</MudText>
+        <MudText Typo="Typo.body2">@Team.ConferenceRank.ConferenceName Conference</MudText>
+        <MudText Typo="Typo.body2">@Team.DivisionRank.DivisionName Division</MudText>
+    </MudCardContent>
+
+    <MudCardActions>
+        <MudButton
+            StartIcon="@Filled.Groups"
+            Class="ml-2 mb-2"
+            Variant="Variant.Filled"
+            Color="@Color.Primary">
+            Roster
+        </MudButton>
+
+        @{ var teamTwitterHandle = Team.TeamDetails.SocialMediaAccounts.SingleOrDefault(x => x.SocialMediaType == "TWITTER")?.Value; }
+        @if (!string.IsNullOrEmpty(teamTwitterHandle))
+        {
+            <MudButton
+                StartIcon="@Brands.Twitter"
+                Link="@($"https://twitter.com/{teamTwitterHandle}")"
+                Class="ml-2 mr-2 mb-2"
+                Variant="Variant.Filled"
+                Color="Color.Primary">
+                Twitter
+            </MudButton>
+        }
+    </MudCardActions>
+</MudCard>
+
+@code {
+    
+    [Parameter]
+    public TeamElement Team { get; set; }
+    
+}

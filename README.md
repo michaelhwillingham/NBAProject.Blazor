@@ -39,7 +39,7 @@
   <h3 align="center">NBAProject.Blazor</h3>
 
   <p align="center">
-    A .NET 5 Blazor Server web application to explore NBA statistics, rosters, and contracts.
+    A .NET 5 Blazor Server web application to explore NBA statistics, rosters, and betting odds.
     <br />
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/wiki/Architecture"><strong>Explore the architecture wiki »</strong></a>
     <br />
@@ -94,9 +94,7 @@ TODO:Add story about project here.
 * [.NET 5](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five)
 * [Blazor Server](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
 * [Mudblazor](https://mudblazor.com/)
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-* [FantasyData NBA API](https://fantasydata.com/api/api-documentation/nba)
-
+* [MySportsFeed NBA API](https://www.mysportsfeeds.com/)
 
 
 <!-- GETTING STARTED -->
@@ -104,11 +102,31 @@ TODO:Add story about project here.
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### MySportsFeeds API Prerequisites
 
-* None! The Cake Frosting script will install the necessary .NET SDK
+* Register for an account with <a href="https://www.mysportsfeeds.com/">MySportsFeeds</a>. Upon registration, you can optionally request personal usage classification - this grants free, non-live API access to all resources. If you plan to test out MySportsFeeds to write your own *non-public* project, you have the option of using their scrambled API to access all API resources for free.
+* Create a new MySportsFeed API key - importantly, this application makes use of the *Details* and *Odds* addons.
+* Navigate to the repository directory on your machine, and the "NBAProject.Blazor" subfolder which contains the "NBAProject.Blazor.csproj" file.
+* Add the API base url to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:BaseUrl" "https://api.mysportsfeeds.com/v2.1/pull/nba"
 
-### Installation
+  --- OR ---
+
+  dotnet user-secrets set "ApiSettings:BaseUrl" "https://api.mysportsfeeds.com/v2.1/pull/nba"
+  ```
+* Add the API username (your API key) to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:Username" "{your_api_key_here}"
+  ```
+* Add the API password ("MYSPORTSFEEDS" for everyone) to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:Password" "MYSPORTSFEEDS"
+  ```
+
+### How to Build
+
+* ***Note** - the referenced Cake Frosting build script will install the appropriate .NET 5 SDK if you do not have it already. (<a href="https://dotnet.microsoft.com/download/dotnet/5.0">v5.0.101</a>)*
 
 1. Clone the repo
    ```sh
@@ -160,7 +178,7 @@ Distributed under the Mozilla Public License 2.0. See `LICENSE` for more informa
 <!-- CONTACT -->
 ## Contact
 
-Michael Willingham - michaelhwillingham@gmail.com
+Michael Willingham - michaelhwillingham@protonmail.com
 
 Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://github.com/michaelhwillingham/NBAProject.Blazor)
 
@@ -169,8 +187,9 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 ### Application Libraries
+* [RestSharp](https://restsharp.dev/)
 * [MediatR](https://github.com/jbogard/MediatR)
-### CI/CD
+### CI/CD & Hosting
 * [Cake Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
 * [GitHub Actions](https://github.com/features/actions)
 * [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/)
@@ -179,7 +198,6 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 * [Shouldly](https://shouldly.io/)
 ### Other
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [Sketch](https://www.sketch.com/)
 
 
 
