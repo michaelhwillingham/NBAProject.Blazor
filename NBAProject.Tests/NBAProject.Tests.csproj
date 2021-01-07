@@ -5,21 +5,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\NBAProject.Models\NBAProject.Models.csproj" />
-      <ProjectReference Include="..\NBAProject.Services\NBAProject.Services.csproj" />
+        <ProjectReference Include="..\NBAProject.Blazor\NBAProject.Blazor.csproj" />
+        <ProjectReference Include="..\NBAProject.Models\NBAProject.Models.csproj" />
+        <ProjectReference Include="..\NBAProject.Services\NBAProject.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Fixie" Version="2.2.2" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-      <PackageReference Include="Shouldly" Version="4.0.3" />
-      <DotNetCliToolReference Include="Fixie.Console" Version="2.2.2" />
+        <PackageReference Include="Fixie" Version="2.2.2" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+        <PackageReference Include="Shouldly" Version="4.0.3" />
+        <DotNetCliToolReference Include="Fixie.Console" Version="2.2.2" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="appsettings.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
+      <Content Include="appsettings.test.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
