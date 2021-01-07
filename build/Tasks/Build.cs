@@ -8,7 +8,7 @@ using Cake.Frosting;
 namespace Build.Tasks
 {
     [TaskName("Build")]
-    [Dependency(typeof(UpdateSettings))]
+    [Dependency(typeof(Clean))]
     public sealed class Build : FrostingTask<BuildContext>
     {
         public override void Run(BuildContext context)

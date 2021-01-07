@@ -39,7 +39,7 @@
   <h3 align="center">NBAProject.Blazor</h3>
 
   <p align="center">
-    A .NET 5 Blazor Server web application to explore NBA statistics, rosters, and contracts.
+    A .NET 5 Blazor Server web application to explore NBA statistics, rosters, and betting odds.
     <br />
     <a href="https://github.com/michaelhwillingham/NBAProject.Blazor/wiki/Architecture"><strong>Explore the architecture wiki »</strong></a>
     <br />
@@ -94,8 +94,12 @@ TODO:Add story about project here.
 * [.NET 5](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five)
 * [Blazor Server](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
 * [Mudblazor](https://mudblazor.com/)
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-* [FantasyData NBA API](https://fantasydata.com/api/api-documentation/nba)
+* [MySportsFeed NBA API](https://www.mysportsfeeds.com/)
+
+|     |     |     |
+| --: | --: | --: |
+| ![.NET 5 Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png) | .NET 5 | View Docs
+| ![Blazor Logo](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevblogs.microsoft.com%2Faspnet%2Fwp-content%2Fuploads%2Fsites%2F16%2F2019%2F04%2FBrandBlazor_nohalo_1000x.png&f=1&nofb=1) | Blazor Server | View Docs |
 
 
 
@@ -106,9 +110,10 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* None! The Cake Frosting script will install the necessary .NET SDK
+* Set up an API account at https://www.mysportsfeeds.com/. Upon registration, you can 
+* ***Note** - the Cake Frosting script will install the appropriate .NET 5 SDK if you do not have it already. (v5.0.101)*
 
-### Installation
+### How to Build
 
 1. Clone the repo
    ```sh
@@ -160,7 +165,7 @@ Distributed under the Mozilla Public License 2.0. See `LICENSE` for more informa
 <!-- CONTACT -->
 ## Contact
 
-Michael Willingham - michaelhwillingham@gmail.com
+Michael Willingham - michaelhwillingham@protonmail.com
 
 Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://github.com/michaelhwillingham/NBAProject.Blazor)
 
@@ -169,8 +174,9 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 ### Application Libraries
+* [RestSharp](https://restsharp.dev/)
 * [MediatR](https://github.com/jbogard/MediatR)
-### CI/CD
+### CI/CD & Hosting
 * [Cake Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting)
 * [GitHub Actions](https://github.com/features/actions)
 * [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/)
@@ -179,7 +185,6 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 * [Shouldly](https://shouldly.io/)
 ### Other
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [Sketch](https://www.sketch.com/)
 
 
 

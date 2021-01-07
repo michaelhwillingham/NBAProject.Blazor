@@ -1,18 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>0376123a-1d41-4222-b92c-f71ff7586609</UserSecretsId>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\NBAProject.Models\NBAProject.Models.csproj" />
-      <ProjectReference Include="..\NBAProject.Services\NBAProject.Services.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBAProject.Models\NBAProject.Models.csproj" />
+    <ProjectReference Include="..\NBAProject.Services\NBAProject.Services.csproj" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="MediatR" Version="9.0.0" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-      <PackageReference Include="MudBlazor" Version="1.2.4" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="MudBlazor" Version="1.2.4" />
+  </ItemGroup>
 
 </Project>

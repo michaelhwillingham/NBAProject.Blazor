@@ -1,5 +1,6 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using NBAProject.Blazor;
 using NBAProject.Models.MySportsFeeds.ApiResponses;
 using NBAProject.Services.MySportsFeeds;
 
@@ -11,7 +12,7 @@ namespace NBAProject.Tests.TestHelpers
         {
             var appSettings = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
             var config = new ConfigurationBuilder()
-                .AddJsonFile(appSettings)
+                .AddUserSecrets<Startup>()
                 .Build();
 
             var apiSettings = config.GetSection("ApiSettings");
