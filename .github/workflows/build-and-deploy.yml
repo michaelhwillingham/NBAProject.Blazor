@@ -13,7 +13,7 @@ jobs:
       - name: Variable Substitution for appsettings.json
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'NBAProject.Blazor/appsettings.json'
+          files: 'NBAProject.Blazor/appsettings.json,  NBAProject.Tests/appsettings.test.json'
         env:
           ApiSettings.BaseUrl: ${{ secrets.API_BASE_URL }}
           ApiSettings.ApiUsername: ${{ secrets.API_USERNAME }}

@@ -10,8 +10,8 @@ namespace NBAProject.Tests.TestHelpers
     {
         public ApiFixture()
         {
-            var appSettings = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
             var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.test.json")
                 .AddUserSecrets<Startup>()
                 .Build();
 
