@@ -16,8 +16,8 @@ jobs:
           files: 'NBAProject.Blazor/appsettings.json'
         env:
           ApiSettings.BaseUrl: ${{ secrets.API_BASE_URL }}
-          ApiSettings.Username: ${{ secrets.API_USERNAME }}
-          ApiSettings.Password: ${{ secrets.API_PASSWORD }}
+          ApiSettings.ApiUsername: ${{ secrets.API_USERNAME }}
+          ApiSettings.ApiPassword: ${{ secrets.API_PASSWORD }}
        
       - name: Execute build script (Debug)
         id: build_debug

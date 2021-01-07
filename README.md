@@ -96,24 +96,37 @@ TODO:Add story about project here.
 * [Mudblazor](https://mudblazor.com/)
 * [MySportsFeed NBA API](https://www.mysportsfeeds.com/)
 
-|     |     |     |
-| --: | --: | --: |
-| ![.NET 5 Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png) | .NET 5 | View Docs
-| ![Blazor Logo](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevblogs.microsoft.com%2Faspnet%2Fwp-content%2Fuploads%2Fsites%2F16%2F2019%2F04%2FBrandBlazor_nohalo_1000x.png&f=1&nofb=1) | Blazor Server | View Docs |
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### MySportsFeeds API Prerequisites
 
-* Set up an API account at https://www.mysportsfeeds.com/. Upon registration, you can 
-* ***Note** - the Cake Frosting script will install the appropriate .NET 5 SDK if you do not have it already. (v5.0.101)*
+* Register for an account with <a href="https://www.mysportsfeeds.com/">MySportsFeeds</a>. Upon registration, you can optionally request personal usage classification - this grants free, non-live API access to all resources. If you plan to test out MySportsFeeds to write your own *non-public* project, you have the option of using their scrambled API to access all API resources for free.
+* Create a new MySportsFeed API key - importantly, this application makes use of the *Details* and *Odds* addons.
+* Navigate to the repository directory on your machine, and the "NBAProject.Blazor" subfolder which contains the "NBAProject.Blazor.csproj" file.
+* Add the API base url to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:BaseUrl" "https://api.mysportsfeeds.com/v2.1/pull/nba"
+
+  --- OR ---
+
+  dotnet user-secrets set "ApiSettings:BaseUrl" "https://api.mysportsfeeds.com/v2.1/pull/nba"
+  ```
+* Add the API username (your API key) to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:Username" "{your_api_key_here}"
+  ```
+* Add the API password ("MYSPORTSFEEDS" for everyone) to your user secrets:
+  ```sh
+  dotnet user-secrets set "ApiSettings:Password" "MYSPORTSFEEDS"
+  ```
 
 ### How to Build
+
+* ***Note** - the referenced Cake Frosting build script will install the appropriate .NET 5 SDK if you do not have it already. (<a href="https://dotnet.microsoft.com/download/dotnet/5.0">v5.0.101</a>)*
 
 1. Clone the repo
    ```sh
