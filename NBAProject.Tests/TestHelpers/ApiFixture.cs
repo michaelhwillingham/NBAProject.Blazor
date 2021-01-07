@@ -1,4 +1,3 @@
-using System.IO;
 using Microsoft.Extensions.Configuration;
 using NBAProject.Blazor;
 using NBAProject.Models.MySportsFeeds.ApiResponses;
@@ -17,8 +16,8 @@ namespace NBAProject.Tests.TestHelpers
 
             var apiSettings = config.GetSection("ApiSettings");
             var baseUrl = apiSettings.GetSection("BaseUrl").Value;
-            var username = apiSettings.GetSection("Username").Value;
-            var password = apiSettings.GetSection("Password").Value;
+            var username = apiSettings.GetSection("ApiUsername").Value;
+            var password = apiSettings.GetSection("ApiPassword").Value;
 
             ApiSettings = new ApiSettings
             {
