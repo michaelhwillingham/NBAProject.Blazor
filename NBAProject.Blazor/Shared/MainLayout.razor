@@ -1,41 +1,112 @@
 ﻿@inherits LayoutComponentBase
 
 <MudLayout>
-    <MudAppBar Color="Color.Primary" Fixed="true">
-        <MudIconButton Icon="@Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer"/>
-        <MudText Class="pl-2" Href="/" Typo="Typo.h6" Link="">NBAProject.Blazor</MudText>
+    <MudAppBar Fixed="true">
+        <MudIconButton Icon="@Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(_ => ToggleDrawer())"/>
+        <MudElement HtmlTag="a"
+                    Href="/"
+                    Class="app-bar-title ml-2"
+                    Style="color: white !important; font-family: Gugi, Roboto, serif; font-size: larger;">
+            NBAProject.Blazor
+        </MudElement>
         <MudAppBarSpacer/>
+        <MudIconButton Icon="@_darkModeToggleIcon" Color="Color.Inherit" OnClick="@(_ => ToggleDarkMode())"/>
         <MudIconButton Icon="@Brands.GitHub" Color="Color.Inherit" Link="https://github.com/michaelhwillingham/NBAProject.Blazor"/>
     </MudAppBar>
-    <MudDrawer @bind-Open="@open" Clipped="true" Elevation="25">
+    <MudDrawer @bind-Open="@_open" Clipped="true" Elevation="25">
         <MudNavMenu Class="pt-4">
-            <MudNavLink Href="/" Icon="@Filled.Home">Home</MudNavLink>
+            <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Filled.Home">Home</MudNavLink>
             <MudNavLink Href="/teams" Icon="@Filled.SportsBasketball">Teams</MudNavLink>
             <MudNavLink Href="/standings" Icon="@Filled.ViewList">Standings</MudNavLink>
-            <MudNavLink Href="/players" Icon="@Filled.Groups">Players</MudNavLink>
             <MudNavGroup Title="Statistics" Icon="@Filled.TrendingUp" Expanded="true">
                 <MudNavLink Href="/playerStats">Individual</MudNavLink>
                 <MudNavLink Href="/teamStats">Team</MudNavLink>
             </MudNavGroup>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent Class="pt-16 px-16">
+    <MudMainContent Class="pt-16">
         <MudContainer Class="mt-6">
             @Body
         </MudContainer>
     </MudMainContent>
+    <footer>
+        <MudDivider DividerType="DividerType.Middle" Class="my-6"/>
+        <MudGrid Class="mt-4 mb-4" Justify="Justify.Center">
+            <MudItem xs="12" sm="12" md="12" lg="12" xl="12">
+                <div class="d-flex justify-center">
+                    <MudText Typo="Typo.overline" Style="text-align: center">
+                        © 2021 Michael Willingham
+                    </MudText>
+                </div>
+                <div class="d-flex justify-center">
+                    <MudLink Typo="Typo.overline" Href="mailto:michaelhwillingham@protonmail.com" Style="text-align: center">
+                        michaelhwillingham@protonmail.com
+                    </MudLink>
+                </div>
+            </MudItem>
+            <MudItem xs="12" sm="12" md="12" lg="12" xl="12">
+                <div class="d-flex justify-center">
+
+                </div>
+            </MudItem>
+        </MudGrid>
+    </footer>
 </MudLayout>
 
-<MudThemeProvider/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
-@code {
-    bool open = true;
+<MudThemeProvider Theme="_currentTheme" />
 
-    void ToggleDrawer()
+@code {
+    
+    private bool _open;
+
+    void ToggleDrawer() => _open = !_open;
+
+    protected override void OnInitialized() => _currentTheme = _defaultTheme;
+
+    void ToggleDarkMode()
     {
-        open = !open;
+        _currentTheme = _currentTheme == _defaultTheme 
+            ? _darkTheme
+            : _defaultTheme;
+
+        _darkModeToggleIcon = _currentTheme == _defaultTheme
+            ? Filled.Brightness3
+            : Filled.Brightness4;
     }
 
+    private MudTheme _currentTheme = new();
+    
+    private readonly MudTheme _defaultTheme = new()
+    {
+        Palette = new Palette
+        {
+            Black = "#272c34"
+        }
+    };
+
+    private readonly MudTheme _darkTheme = new()
+    {
+        Palette = new Palette
+        {
+            Black = "#27272f",
+            Background = "#32333d",
+            BackgroundGrey = "#27272f",
+            Surface = "#373740",
+            DrawerBackground = "#27272f",
+            DrawerText = "rgba(255,255,255, 0.50)",
+            DrawerIcon = "rgba(255,255,255, 0.50)",
+            AppbarBackground = "#27272f",
+            AppbarText = "rgba(255,255,255, 0.70)",
+            TextPrimary = "rgba(255,255,255, 0.70)",
+            TextSecondary = "rgba(255,255,255, 0.50)",
+            ActionDefault = "#adadb1",
+            ActionDisabled = "rgba(255,255,255, 0.26)",
+            ActionDisabledBackground = "rgba(255,255,255, 0.12)"
+        }
+    };
+
+    private string _darkModeToggleIcon = Filled.Brightness3;
 }
