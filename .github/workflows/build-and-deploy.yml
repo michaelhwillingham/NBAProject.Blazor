@@ -21,17 +21,17 @@ jobs:
        
       - name: Execute build script (Debug)
         id: build_debug
-        if: steps.get_branch.outputs.branch != 'main'
+        if: github.ref != 'refs/heads/main'
         run: bash build.sh --configuration=Debug --isGitHubActions=true
       
       - name: Execute build script (Release)
         id: build_release
-        if: steps.get_branch.outputs.branch == 'main'
+        if: github.ref == 'refs/heads/main'
         run: bash build.sh --configuration=Release --isGitHubActions=true
       
       - name: Publish build artifact
         id: publish_artifact
-        if: steps.get_branch.outputs.branch == 'main'
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v2
         with:
           name: nbaproject.blazor-artifact
@@ -39,7 +39,7 @@ jobs:
       
       - name: Create release
         id: create_release
-        if: steps.get_branch.outputs.branch == 'main'
+        if: github.ref == 'refs/heads/main'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
