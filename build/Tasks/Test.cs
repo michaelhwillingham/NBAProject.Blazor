@@ -23,6 +23,7 @@ namespace Build.Tasks
             {
                 context.DotNetCoreTest(project, new DotNetCoreTestSettings
                 {
+                    Configuration = context.MsBuildConfiguration,
                     NoBuild = true,
                     NoLogo = true,
                     NoRestore = true
