@@ -30,7 +30,10 @@ namespace NBAProject.Blazor
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.AllowAnyOrigin();
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 });
             });
             
@@ -46,7 +49,7 @@ namespace NBAProject.Blazor
             services.AddSingleton<IApiSettings>(serviceProvider =>
                 serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value);
 
-            services.AddScoped(typeof(IApiService<>), typeof(ApiService<>));
+            services.AddSingleton(typeof(IApiService<>), typeof(ApiService<>));
 
             var servicesAssembly = AppDomain.CurrentDomain.Load("NBAProject.Services");
             services.AddMediatR(servicesAssembly);
@@ -65,6 +68,8 @@ namespace NBAProject.Blazor
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

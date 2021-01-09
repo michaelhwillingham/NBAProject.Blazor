@@ -105,7 +105,7 @@ To get a local copy up and running follow these simple steps.
 ### MySportsFeeds API Prerequisites
 
 * Register for an account with <a href="https://www.mysportsfeeds.com/">MySportsFeeds</a>. Upon registration, you can optionally request personal usage classification - this grants free, non-live API access to all resources. If you plan to test out MySportsFeeds to write your own *non-public* project, you have the option of using their scrambled API to access all API resources for free.
-* Create a new MySportsFeed API key - importantly, this application makes use of the *Details* and *Odds* addons.
+* Create a new MySportsFeed API key - importantly, this application makes use of the *Stats*, *Details* and *Odds* addons.
 * Navigate to the repository directory on your machine, and the "NBAProject.Blazor" subfolder which contains the "NBAProject.Blazor.csproj" file.
 * Add the API base url to your user secrets:
   ```sh
@@ -113,15 +113,15 @@ To get a local copy up and running follow these simple steps.
 
   --- OR ---
 
-  dotnet user-secrets set "ApiSettings:BaseUrl" "https://api.mysportsfeeds.com/v2.1/pull/nba"
+  dotnet user-secrets set "ApiSettings:BaseUrl" "https://scrambled-api.mysportsfeeds.com/v2.1/pull/nba"
   ```
 * Add the API username (your API key) to your user secrets:
   ```sh
-  dotnet user-secrets set "ApiSettings:Username" "{your_api_key_here}"
+  dotnet user-secrets set "ApiSettings:ApiUsername" "{your_api_key_here}"
   ```
 * Add the API password ("MYSPORTSFEEDS" for everyone) to your user secrets:
   ```sh
-  dotnet user-secrets set "ApiSettings:Password" "MYSPORTSFEEDS"
+  dotnet user-secrets set "ApiSettings:ApiPassword" "MYSPORTSFEEDS"
   ```
 
 ### How to Build
@@ -194,7 +194,7 @@ Project Link: [https://github.com/michaelhwillingham/NBAProject.Blazor](https://
 * [GitHub Actions](https://github.com/features/actions)
 * [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/)
 ### Testing Libraries
-* [Fixie](https://fixie.github.io/)
+* [XUnit](https://xunit.net/)
 * [Shouldly](https://shouldly.io/)
 ### Other
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)

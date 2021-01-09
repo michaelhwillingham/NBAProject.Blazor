@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>0376123a-1d41-4222-b92c-f71ff7586609</UserSecretsId>
+    <UserSecretsId>da1c343e-561e-41d6-a4f2-1003c31a5125</UserSecretsId>
+    <Company>Michael Willingham</Company>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
