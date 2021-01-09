@@ -22,12 +22,12 @@ jobs:
       - name: Execute build script (Debug)
         id: build_debug
         if: github.ref != 'refs/heads/main'
-        run: bash build.sh --configuration=Debug --isGitHubActions=true
+        run: bash build.sh --configuration=Debug
       
       - name: Execute build script (Release)
         id: build_release
         if: github.ref == 'refs/heads/main'
-        run: bash build.sh --configuration=Release --isGitHubActions=true
+        run: bash build.sh --configuration=Release
       
       - name: Publish build artifact
         id: publish_artifact
