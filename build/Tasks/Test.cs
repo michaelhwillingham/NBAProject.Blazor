@@ -29,8 +29,6 @@ namespace Build.Tasks
                     NoRestore = true
                 });
             }
-
-            Directory.SetCurrentDirectory("..");
         }
     }
 }
