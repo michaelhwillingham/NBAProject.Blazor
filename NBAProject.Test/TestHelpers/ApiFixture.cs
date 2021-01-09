@@ -1,16 +1,17 @@
+using System.IO;
 using Microsoft.Extensions.Configuration;
 using NBAProject.Blazor;
 using NBAProject.Models.MySportsFeeds.ApiResponses;
 using NBAProject.Services.MySportsFeeds;
 
-namespace NBAProject.Tests.TestHelpers
+namespace NBAProject.Test.TestHelpers
 {
     public class ApiFixture<T> where T : ApiResponse
     {
         public ApiFixture()
         {
             var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.test.json")
+                .AddJsonFile("appsettings.Test.json")
                 .AddUserSecrets<Startup>()
                 .Build();
 
@@ -22,8 +23,8 @@ namespace NBAProject.Tests.TestHelpers
             ApiSettings = new ApiSettings
             {
                 BaseUrl = baseUrl,
-                Username = username,
-                Password = password
+                ApiUsername = username,
+                ApiPassword = password
             };
 
             ApiService = new ApiService<T>(ApiSettings);

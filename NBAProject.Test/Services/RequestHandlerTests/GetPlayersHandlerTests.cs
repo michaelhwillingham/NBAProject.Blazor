@@ -1,18 +1,18 @@
-// ReSharper disable InconsistentNaming
-
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NBAProject.Models.MySportsFeeds.ApiResponses;
 using NBAProject.Models.Requests;
 using NBAProject.Services.RequestHandlers;
-using NBAProject.Tests.TestHelpers;
+using NBAProject.Test.TestHelpers;
 using Shouldly;
+using Xunit;
 
-namespace NBAProject.Tests.Services.RequestHandlerTests
+namespace NBAProject.Test.Services.RequestHandlerTests
 {
     public class GetPlayersHandlerTests
     {
+        [Fact]
         public async Task ShouldGetAllPlayers()
         {
             var apiService = new ApiFixture<GetPlayersResponse>().ApiService;
@@ -26,6 +26,7 @@ namespace NBAProject.Tests.Services.RequestHandlerTests
             players.Count.ShouldBeGreaterThan(0);
         }
 
+        [Fact]
         public async Task ShouldGetPlayersByTeam()
         {
             var apiService = new ApiFixture<GetPlayersResponse>().ApiService;

@@ -36,7 +36,7 @@ namespace NBAProject.Services.MySportsFeeds
             return new()
             {
                 BaseUrl = new Uri(_apiSettings.BaseUrl),
-                Authenticator = new HttpBasicAuthenticator(_apiSettings.Username, _apiSettings.Password)
+                Authenticator = new HttpBasicAuthenticator(_apiSettings.ApiUsername, _apiSettings.ApiPassword)
             };
         }
     }
